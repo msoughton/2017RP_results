@@ -1,0 +1,16 @@
+// Plots all branches
+
+void make_NTuple_plots_all_branches(){
+  TFile *f = new TFile("SupernovaAna_radiological1_hist.root");
+  TTree* T = (TTree*)f->Get("SupernovaAna");
+  
+  TObjArray *arr = T->GetListOfBranches();
+
+  for(int i=0; i < arr->GetSize();i++)
+  {
+    TString branchName = arr->At(i)->GetName();
+    T->Draw("branchName");
+  }
+
+  
+}
